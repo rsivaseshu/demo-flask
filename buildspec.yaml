@@ -1,6 +1,10 @@
 version: 0.2
 
 phases:
+  # install:
+  #   commands:
+  #     - service docker start 
+  #     - service docker status
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -14,8 +18,8 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker --version 
-      - systemctl start docker
-      - systemctl status docker
+      - sudo systemctl start docker
+      - sudo systemctl status docker
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
