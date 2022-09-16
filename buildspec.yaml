@@ -18,8 +18,8 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker --version 
-      - sudo systemctl start docker
-      - sudo systemctl status docker
+      - sudo service docker start
+      - sudo service docker status
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
